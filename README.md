@@ -12,8 +12,6 @@ This project simulates a real-world solution:
 
 > An AI-powered query engine that translates natural language into safe, governed SQL queries over enterprise data.
 
-Unlike typical LLM demos, this system is designed with **architecture, control, and reliability in mind**.
-
 ---
 
 ## 🧠 System Capabilities
