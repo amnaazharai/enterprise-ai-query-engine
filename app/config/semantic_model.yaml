@@ -1,0 +1,52 @@
+tables:
+
+  customers:
+    description: "Customer master data"
+    columns:
+      customer_id: "Unique identifier for each customer"
+      first_name: "Customer first name"
+      last_name: "Customer last name"
+      email: "Customer email address"
+      country: "Customer country"
+      signup_date: "Date the customer registered"
+
+  products:
+    description: "Product catalog"
+    columns:
+      product_id: "Unique product identifier"
+      product_name: "Name of the product"
+      category: "Product category"
+      price_usd: "Price in USD"
+
+  orders:
+    description: "Transactional purchase data"
+    columns:
+      order_id: "Unique order identifier"
+      customer_id: "Customer who placed the order"
+      product_id: "Product purchased"
+      order_date: "Date of purchase"
+      amount_usd: "Total order value in USD"
+
+  events:
+    description: "User behavioral events"
+    columns:
+      event_id: "Unique event identifier"
+      customer_id: "User performing the event"
+      event_type: "Type of event (view, add_to_cart, purchase)"
+      product_id: "Associated product"
+      timestamp: "Event timestamp"
+      session_id: "User session identifier"
+
+metrics:
+
+  total_revenue:
+    description: "Total revenue from all orders"
+    sql: "SUM(orders.amount_usd)"
+
+  total_orders:
+    description: "Total number of orders"
+    sql: "COUNT(orders.order_id)"
+
+  conversion_rate:
+    description: "Percentage of users who make a purchase"
+    sql: "COUNT(DISTINCT orders.customer_id) / COUNT(DISTINCT events.customer_id)"
